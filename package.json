@@ -1,4 +1,17 @@
 {
+  "name": "hardhat-template",
+  "version": "1.0.1",
+  "description": "minimal hardhat project template",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiruxaspb/truffle-template.git"
+  },
+  "author": "kiruxaspb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kiruxaspb/truffle-template/issues"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.2",
     "@truffle/hdwallet-provider": "^2.1.8",

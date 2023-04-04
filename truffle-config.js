@@ -1,14 +1,23 @@
-require('dotenv').config({ path: '.env'});
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const { INFURA, MNEMONIC, ETHSKAN } = process.env;
+const fs = require("fs");
+
+require('dotenv').config({ path: '.env'});
+const MNEMONIC = fs.readFileSync(".secret").toString().trim();
+
+const { INFURA, ETHSKAN } = process.env;
 
 module.exports = {
   networks: {
+    sepolia: {
+      provider: () => new HDWalletProvider(MNEMONIC, `https://sepolia.infura.io/v3/${INFURA}`),
+      network_id: 11155111,
+      gas: 29000000
+    },
     goerli: {
-      provider: () => new HDWalletProvider(MNEMONIC, INFURA),
+      provider: () => new HDWalletProvider(MNEMONIC, `https://goerli.infura.io/v3/${INFURA}`),
       network_id: 5,
       gas: 29000000
-    }
+    },
   },
   mocha: {
     enableTimeouts: false,
@@ -18,7 +27,7 @@ module.exports = {
         onlyCalledMethods: 'true',
         showTimeSpent: 'true'
     }
-},
+  },
   plugins: ['truffle-plugin-verify'],
   api_keys: {
     etherscan: ETHSKAN

@@ -1,7 +1,9 @@
 # Truffle minimal template
 
 ### Installation
+Node: 18.15.0
 
+NPM: 9.3.1
 ```bash
 npm install -g truffle
 ```
